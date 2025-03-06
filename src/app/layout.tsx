@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import Footer from "./components/footer/Footer";
 
 const roboto = Roboto({
   variable: "--roboto",
@@ -31,7 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className + " antialiased"}>{children}</body>
+      <body className={roboto.className + " antialiased"}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
