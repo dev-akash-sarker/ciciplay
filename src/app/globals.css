@@ -50,7 +50,7 @@ ul li a {
   background-color: #fff !important;
   width: 24px !important;
   height: 5px !important;
-  margin: 25px 5px !important;
+  margin: 45px 5px !important;
   border-radius: 0 !important;
   transition: all 0.3s ease;
 }
@@ -61,4 +61,16 @@ ul li a {
   width: 24px !important;
   height: 5px !important;
   border-radius: 0 !important;
+  opacity: 1 !important;
+}
+
+.hotsalehover:hover .custom-border {
+  border-width: 4px; /* Adjust border width as needed */
+  border-image: linear-gradient(
+    -69deg,
+    rgba(168, 85, 247, 1) 0%,
+    rgba(211, 165, 255, 1) 50%,
+    rgba(246, 237, 255, 1) 100%
+  );
+  border-image-slice: 1;
 }

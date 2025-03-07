@@ -7,8 +7,8 @@ export default function Footer() {
     <>
       <div className="@container bg-[#1E293B]">
         <div className=" xs:w-full xs:px-5 w-[1250px] mx-auto">
-          <div className="flex flex-wrap justify-between py-5">
-            <div className=" xs:w-full sm:w-full md:w-full xl:w-[181px]">
+          <div className="ml-15 flex flex-wrap justify-between py-5">
+            <div className="  xs:w-full sm:w-full md:w-full xl:w-[181px]">
               <Link href="/">
                 <Image
                   src={"/assets/images/header/logo.png"}

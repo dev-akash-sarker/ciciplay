@@ -36,9 +36,11 @@ const Slider: FC = () => {
         loop={true}
         effect="fade"
         className="mySwiper"
-        style={{
-          "--swiper-pagination-bullet-inactive-opacity": "1",
-        }}
+        style={
+          {
+            "--swiper-pagination-bullet-inactive-opacity": "1",
+          } as React.CSSProperties
+        }
       >
         <SwiperSlide className="relative w-full h-[500px]">
           {/* Image must have a relative parent */}
