@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import url("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css");
 @theme {
   --breakpoint-xs: 20rem;
   --breakpoint-sm: 40rem; /* 640px */
@@ -43,4 +43,22 @@ ul li a {
     rgba(246, 237, 255, 1) 100%
   );
   border-radius: 12px;
+}
+
+/* Customize active dot */
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+  width: 24px !important;
+  height: 5px !important;
+  margin: 25px 5px !important;
+  border-radius: 0 !important;
+  transition: all 0.3s ease;
+}
+
+/* Active dot */
+.swiper-pagination-bullet-active {
+  background-color: #a855f7 !important;
+  width: 24px !important;
+  height: 5px !important;
+  border-radius: 0 !important;
 }
