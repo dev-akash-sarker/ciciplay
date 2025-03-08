@@ -1,12 +1,115 @@
+"use client";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useState } from "react";
+import CustomSelect from "./CustomSelect";
 
 const Hotsales: FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedValue, setSelectedValue] = useState<string>("");
+  const games = [
+    {
+      value: "volvo",
+      label: "Volvo",
+      icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
+    },
+    {
+      value: "saab",
+      label: "Saab",
+      icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
+    },
+    {
+      value: "mercedes",
+      label: "Mercedes",
+      icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
+    },
+    {
+      value: "audi",
+      label: "Audi",
+      icon: (
+        <Image
+          src="/hotsale/a.png"
+          width={24}
+          height={24}
+          alt="new"
+          className=" rounded-full"
+        />
+      ),
+    },
+    {
+      value: "audi",
+      label: "Audi",
+      icon: (
+        <Image
+          src="/hotsale/a.png"
+          width={24}
+          height={24}
+          alt="new"
+          className=" rounded-full"
+        />
+      ),
+    },
+    {
+      value: "audi",
+      label: "Audi",
+      icon: (
+        <Image
+          src="/hotsale/a.png"
+          width={24}
+          height={24}
+          alt="new"
+          className=" rounded-full"
+        />
+      ),
+    },
+    {
+      value: "audi",
+      label: "Audi",
+      icon: (
+        <Image
+          src="/hotsale/a.png"
+          width={24}
+          height={24}
+          alt="new"
+          className=" rounded-full"
+        />
+      ),
+    },
+    {
+      value: "audi",
+      label: "Audi",
+      icon: (
+        <Image
+          src="/hotsale/a.png"
+          width={24}
+          height={24}
+          alt="new"
+          className=" rounded-full"
+        />
+      ),
+    },
+    {
+      value: "audi",
+      label: "Audi",
+      icon: (
+        <Image
+          src="/hotsale/a.png"
+          width={24}
+          height={24}
+          alt="new"
+          className=" rounded-full"
+        />
+      ),
+    },
+  ];
   type hotsaletype = {
     image: string;
     title: string;
   };
 
+  type packageType = {
+    title: string;
+    img: string;
+  };
   const hotsales: hotsaletype[] = [
     {
       image: "/hotsale/a.png",
@@ -33,6 +136,22 @@ const Hotsales: FC = () => {
       title: "Dungeonborne Gold",
     },
   ];
+  const packages: packageType[] = [
+    { title: "Gold", img: "/hotsale/a.png" },
+    {
+      title: "Wow",
+      img: "/hotsale/b.png",
+    },
+    {
+      title: "NBA",
+      img: "/hotsale/c.png",
+    },
+    {
+      title: "WOW",
+      img: "/hotsale/d.png",
+    },
+  ];
+
   return (
     <>
       <div className="w-[1250px] mx-auto ">
@@ -73,49 +192,34 @@ const Hotsales: FC = () => {
             </div>
           </div>
           <div className="bg-[rgba(22,31,51,70)] rounded-[20px] -mt-10 z-40">
-            <div className="m-6 w-[389px h-[56px] border border-[#334155] rounded-[10px]">
-              <select
-                className="z-20 w-full h-full bg-[#0F172A] text-white p-[16px] border-r-[16px] border-transparent outline-none rounded-[10px]"
-                name="cars"
-                id="cars"
-              >
-                <option value="volvo">
-                  <Image
-                    src="/hotsale/skull.png"
-                    width={24}
-                    height={24}
-                    alt="skull"
-                  />
-                  Volvo
-                </option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
-            </div>
-
-            <div className="flex hotsalehover w-[322px] mb-6 mx-6 flex-wrap  gap-3">
-              {hotsales.map((item, i) => (
-                <>
-                  <div
-                    key={i}
-                    className="w-[155px] h-[60px] bg-gradient-to-l from-purple-500 via-indigo-200 to-purple-100 relative rounded-[10px]"
-                  >
-                    <div className="w-[147px] h-[52.9px] bg-[#161F33] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-[4.5px] outline-[#334155] hover:outline-transparent rounded-md flex items-center gap-3 p-2">
-                      <Image
-                        src={item.image}
-                        width={44}
-                        height={44}
-                        alt={item.title}
-                        className=" rounded-[10px]"
-                      />
-                      <h6 className=" text-[#D6E0EB] text-base font-normal">
-                        {item.title}
-                      </h6>
+            <div className="p-6">
+              <CustomSelect games={games} onSelect={setSelectedValue} />
+              {/* {selectedValue && (
+                <p className="mt-4">Selected: {selectedValue}</p>
+              )} */}
+              <div className="flex hotsalehover w-full my-6 flex-wrap  gap-3">
+                {packages.map((item, i) => (
+                  <>
+                    <div
+                      key={i}
+                      className="w-[89.75px] h-[40px] bg-gradient-to-l from-purple-500 via-indigo-200 to-purple-100 relative rounded-[10px]"
+                    >
+                      <div className="w-[81.75px] h-[32px] bg-[#161F33] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-[4.5px] outline-[#334155] hover:outline-transparent rounded-md flex items-center gap-3 p-2">
+                        <Image
+                          src={item.img}
+                          width={18}
+                          height={18}
+                          alt={item.title}
+                          className=" rounded-full"
+                        />
+                        <h6 className=" text-[#D6E0EB] text-base font-normal">
+                          {item.title}
+                        </h6>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ))}
+                  </>
+                ))}
+              </div>
             </div>
           </div>
         </div>
