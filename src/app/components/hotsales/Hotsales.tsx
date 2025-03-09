@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { FC, useState } from "react";
 import CustomSelect from "./CustomSelect";
+import SaleForm from "./Saleform";
 
 const Hotsales: FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -193,33 +194,7 @@ const Hotsales: FC = () => {
           </div>
           <div className="bg-[rgba(22,31,51,70)] rounded-[20px] -mt-10 z-40">
             <div className="p-6">
-              <CustomSelect games={games} onSelect={setSelectedValue} />
-              {/* {selectedValue && (
-                <p className="mt-4">Selected: {selectedValue}</p>
-              )} */}
-              <div className="flex hotsalehover w-full my-6 flex-wrap  gap-3">
-                {packages.map((item, i) => (
-                  <>
-                    <div
-                      key={i}
-                      className="w-[89.75px] h-[40px] bg-gradient-to-l from-purple-500 via-indigo-200 to-purple-100 relative rounded-[10px]"
-                    >
-                      <div className="w-[81.75px] h-[32px] bg-[#161F33] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-[4.5px] outline-[#334155] hover:outline-transparent rounded-md flex items-center gap-3 p-2">
-                        <Image
-                          src={item.img}
-                          width={18}
-                          height={18}
-                          alt={item.title}
-                          className=" rounded-full"
-                        />
-                        <h6 className=" text-[#D6E0EB] text-base font-normal">
-                          {item.title}
-                        </h6>
-                      </div>
-                    </div>
-                  </>
-                ))}
-              </div>
+              <SaleForm />
             </div>
           </div>
         </div>
