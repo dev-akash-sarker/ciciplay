@@ -3,12 +3,6 @@ import { ChangeEvent, FC, JSX, useState, FormEvent } from "react";
 import CustomSelect from "./CustomSelect";
 
 const SaleForm: FC = () => {
-  interface FormData {
-    name: string;
-    email: string;
-    game: string;
-    item: string;
-  }
   const [selectedValue, setSelectedValue] = useState<string>("");
   const [buttonValue, setButtonValue] = useState<string>("");
   const [formData, setFormData] = useState<FormData>({
@@ -17,7 +11,42 @@ const SaleForm: FC = () => {
     game: "",
     item: "",
   });
+  interface FormData {
+    name: string;
+    email: string;
+    game: string;
+    item: string;
+  }
 
+  // Define interface for extra server
+  interface ExtraServer {
+    middleServer: string[]; // Array of strings
+    servers: { servername: string }[]; // Array of server objects
+  }
+
+  // Define main server interface
+  interface Server {
+    serverName: string;
+    extraserver: ExtraServer;
+  }
+
+  // Example data following the type
+  const serveres: Server[] = [
+    {
+      serverName: "NA",
+      extraserver: {
+        middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
+        servers: [
+          // Array of server objects
+          { servername: "Adamantoise" },
+          { servername: "Cactuar" },
+          { servername: "Faerie" },
+          { servername: "Gilgamesh" },
+          { servername: "Jenova" },
+        ],
+      },
+    },
+  ];
   type packageType = {
     title: string;
     img: string;
@@ -95,40 +124,60 @@ const SaleForm: FC = () => {
     console.log(jsonData); // You can handle the JSON data here
   };
 
-  const handleButtonClick = (event: any) => {
-    setButtonValue(event.target.value);
+  const handleButtonClick = (event: string) => {
+    setButtonValue(event);
+    console.log(event);
   };
+
   return (
     <>
+      <form onSubmit={handleSubmit}>
+        <button type="submit" className="submit-btn">
+          Submit
+        </button>
+
+        {/* For demo purposes, showing current selected value */}
+        <p>Selected Value: {selectedValue}</p>
+
+        {/* Inline CSS */}
+      </form>
       <form action="" onSubmit={handleSubmit}>
         <CustomSelect games={games} onSelect={setSelectedValue} />
-        <div className="flex hotsalehover w-full my-6 flex-wrap  gap-3">
+        <div className=" flex hotsalehover w-full my-6 flex-wrap  gap-3">
           {packages.map((item, i) => (
-            <>
-              <div
-                key={i}
-                className="w-[89.75px] h-[40px] bg-gradient-to-l from-purple-500 via-indigo-200 to-purple-100 relative rounded-[10px]"
+            <div
+              key={i}
+              className="w-[89.75px] h-[40px] bg-gradient-to-l from-purple-500 via-indigo-200 to-purple-100 relative rounded-[10px]"
+            >
+              <button
+                type="button"
+                value={item.title}
+                className={`select-btn ${
+                  buttonValue === item.title
+                    ? "w-[81.75px] h-[32px] bg-[#161F33] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-[4.5px]  outline-transparent rounded-md flex items-center gap-3 p-2"
+                    : "w-[81.75px] h-[32px] bg-[#161F33] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-[4.5px] outline-[#334155] hover:outline-transparent rounded-md flex items-center gap-3 p-2"
+                }`}
+                onClick={() => handleButtonClick(item.title)}
               >
-                <button
-                  className="w-[81.75px] h-[32px] bg-[#161F33] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-[4.5px] outline-[#334155] hover:outline-transparent rounded-md flex items-center gap-3 p-2"
-                  onClick={handleButtonClick}
-                  value={item.title}
-                >
-                  <Image
-                    src={item.img}
-                    width={18}
-                    height={18}
-                    alt={item.title}
-                    className=" rounded-full"
-                  />
-                  <h6 className=" text-[#D6E0EB] text-base font-normal">
-                    {item.title}
-                  </h6>
-                </button>
-              </div>
-            </>
+                <Image
+                  src={item.img}
+                  width={18}
+                  height={18}
+                  alt={item.title}
+                  className=" rounded-full"
+                />
+                <h6 className=" text-[#D6E0EB] text-base font-normal">
+                  {item.title}
+                </h6>
+              </button>
+            </div>
           ))}
         </div>
+        <CustomSelect
+          servers={serveres}
+          server="true"
+          onSelect={setSelectedValue}
+        />
         <div>
           <label>Name:</label>
           <input
