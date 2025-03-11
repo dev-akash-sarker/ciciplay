@@ -32,21 +32,33 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   onSelect,
   placeholder = "Select an option",
   server,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   servers,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Game | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedRegion, setSelectedRegion] = useState<string>("NA"); // Default region
 
   // Filter games based on the search query
-  const filteredGames = games?.filter((game) =>
-    game.label.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredGames = games?.filter((game) => {
+    console.log("games", game);
+    game.label.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
+  // Find selected region's data
+  const selectedData = servers?.find(
+    (region) => region.serverName === selectedRegion
   );
 
-  const filteredServer = servers?.filter((sv) => {
-    sv.serverName.toLowerCase().includes(searchQuery.toLowerCase());
-  });
+  // Filter middle servers and servers based on search term
+  const filteredMiddleServers = selectedData?.extraserver.middleServer.filter(
+    (middle) => middle.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredServers = selectedData?.extraserver.servers.filter((server) =>
+    server.servername.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const selectRef = useRef<HTMLDivElement>(null);
 
@@ -119,14 +131,25 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                 alt="hello"
               />
             </button>
-            <input
-              className=" w-[356px] h-12 border border-[#334155] text-[#D6E0EB] rounded-lg outline-0 shadow-md z-10 m-4 indent-[52px] placeholder:text-[#D6E0EB]"
-              placeholder="Search Game"
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+            {server ? (
+              <input
+                className=" w-[356px] h-12 border border-[#334155] text-[#D6E0EB] rounded-lg outline-0 shadow-md z-10 m-4 indent-[52px] placeholder:text-[#D6E0EB]"
+                placeholder="Search Game"
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            ) : (
+              <input
+                className=" w-[356px] h-12 border border-[#334155] text-[#D6E0EB] rounded-lg outline-0 shadow-md z-10 m-4 indent-[52px] placeholder:text-[#D6E0EB]"
+                placeholder="Search Game"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            )}
           </div>
+
           {filteredGames?.map((game) => (
             <li
               key={game.value}
@@ -137,7 +160,55 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
               {game.label}
             </li>
           ))}
-          <div className=" w-[356px] flex gap-3  m-4">
+          <div className="w-[356px] flex gap-3 m-4">
+            {/* Column 1: Region List */}
+            <div className="w-1/3 border-r border-[#334155] flex flex-col gap-2">
+              {servers?.map((region, idx) => (
+                <div
+                  key={idx}
+                  className={`flex gap-2 mx-0 p-2 rounded-xl my-2 cursor-pointer hover:bg-red-300 ${
+                    selectedRegion === region.serverName ? "bg-red-300" : ""
+                  }`}
+                  onClick={() => setSelectedRegion(region.serverName)} // Select region on click
+                >
+                  <Image
+                    src={`/hotsale/${region.serverName.toLowerCase()}.png`}
+                    alt={region.serverName}
+                    width={24}
+                    height={24}
+                  />
+                  <span>{region.serverName}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Column 2: Middle Servers */}
+            <div className="w-1/3 border-r border-[#334155] flex flex-col gap-4 mt-3">
+              {filteredMiddleServers && filteredMiddleServers.length > 0 ? (
+                filteredMiddleServers.map((middle, idx) => (
+                  <div key={idx} className="mx-0 my-2">
+                    <span>{middle}</span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-400">No middle server</p>
+              )}
+            </div>
+
+            {/* Column 3: Servers */}
+            <div className="w-1/3 border-r border-[#334155] flex flex-col gap-4 mt-3">
+              {filteredServers && filteredServers.length > 0 ? (
+                filteredServers.map((server, idx) => (
+                  <div key={idx} className="mx-0 my-2">
+                    <span>{server.servername}</span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-400">No server found</p>
+              )}
+            </div>
+          </div>
+          {/* <div className=" w-[356px] flex gap-3  m-4">
             <div className=" w-1/3 border-r border-[#334155] flex flex-col gap-2">
               <div className=" flex gap-2 mx-0 p-2 rounded-xl hover:bg-red-300 my-2">
                 <Image src="/hotsale/na.png" alt="na" width={24} height={24} />
@@ -191,7 +262,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
               </div>
             </div>
             <hr />
-          </div>
+          </div> */}
         </ul>
       )}
     </div>

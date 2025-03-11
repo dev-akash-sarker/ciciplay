@@ -18,20 +18,8 @@ const SaleForm: FC = () => {
     item: string;
   }
 
-  // Define interface for extra server
-  interface ExtraServer {
-    middleServer: string[]; // Array of strings
-    servers: { servername: string }[]; // Array of server objects
-  }
-
-  // Define main server interface
-  interface Server {
-    serverName: string;
-    extraserver: ExtraServer;
-  }
-
   // Example data following the type
-  const serveres: Server[] = [
+  const serveres = [
     {
       serverName: "NA",
       extraserver: {
@@ -46,7 +34,37 @@ const SaleForm: FC = () => {
         ],
       },
     },
+    {
+      serverName: "JP",
+      extraserver: {
+        middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
+        servers: [
+          // Array of server objects
+          { servername: "Adamantoise" },
+          { servername: "Cactuar" },
+          { servername: "Faerie" },
+          { servername: "Gilgamesh" },
+          { servername: "Jenova" },
+        ],
+      },
+    },
+    {
+      serverName: "OCE",
+      extraserver: {
+        middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
+        servers: [
+          // Array of server objects
+          { servername: "Adamantoise" },
+          { servername: "Cactuar" },
+          { servername: "Faerie" },
+          { servername: "Gilgamesh" },
+          { servername: "Jenova" },
+        ],
+      },
+    },
   ];
+
+  console.log("hello", serveres);
   type packageType = {
     title: string;
     img: string;
