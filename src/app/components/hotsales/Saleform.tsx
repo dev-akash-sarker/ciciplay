@@ -4,18 +4,21 @@ import CustomSelect from "./CustomSelect";
 
 const SaleForm: FC = () => {
   const [selectedValue, setSelectedValue] = useState<string>("");
+  const [selectedServer, setSelectedSever] = useState<string>("");
   const [buttonValue, setButtonValue] = useState<string>("");
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     game: "",
     item: "",
+    server: "",
   });
   interface FormData {
     name: string;
     email: string;
     game: string;
     item: string;
+    server: string;
   }
 
   // Example data following the type
@@ -137,6 +140,7 @@ const SaleForm: FC = () => {
       ...formData,
       game: selectedValue,
       item: buttonValue,
+      server: selectedServer,
     };
     const jsonData = JSON.stringify(updatedFormData);
     console.log(jsonData); // You can handle the JSON data here
@@ -156,6 +160,7 @@ const SaleForm: FC = () => {
 
         {/* For demo purposes, showing current selected value */}
         <p>Selected Value: {selectedValue}</p>
+        <p>server Value: {selectedServer}</p>
 
         {/* Inline CSS */}
       </form>
@@ -194,7 +199,7 @@ const SaleForm: FC = () => {
         <CustomSelect
           servers={serveres}
           server="true"
-          onSelect={setSelectedValue}
+          onSelect={setSelectedSever}
         />
         <div>
           <label>Name:</label>
