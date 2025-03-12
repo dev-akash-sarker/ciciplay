@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { ChangeEvent, FC, JSX, useState, FormEvent } from "react";
-// import CustomSelect from "./CustomSelect";
+
 import SelectGame from "../selectgame/SelectGame";
 
 const SaleForm: FC = () => {
   const [selectedValue, setSelectedValue] = useState<string>("");
-  // const [selectedServer, setSelectedSever] = useState<string>("");
   const [buttonValue, setButtonValue] = useState<string>("");
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -23,52 +22,51 @@ const SaleForm: FC = () => {
   }
 
   // Example data following the type
-  const serveres = [
-    {
-      serverName: "NA",
-      extraserver: {
-        middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
-        servers: [
-          // Array of server objects
-          { servername: "Adamantoise" },
-          { servername: "Cactuar" },
-          { servername: "Faerie" },
-          { servername: "Gilgamesh" },
-          { servername: "Jenova" },
-        ],
-      },
-    },
-    {
-      serverName: "JP",
-      extraserver: {
-        middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
-        servers: [
-          // Array of server objects
-          { servername: "Adamantoise" },
-          { servername: "Cactuar" },
-          { servername: "Faerie" },
-          { servername: "Gilgamesh" },
-          { servername: "Jenova" },
-        ],
-      },
-    },
-    {
-      serverName: "OCE",
-      extraserver: {
-        middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
-        servers: [
-          // Array of server objects
-          { servername: "Adamantoise" },
-          { servername: "Cactuar" },
-          { servername: "Faerie" },
-          { servername: "Gilgamesh" },
-          { servername: "Jenova" },
-        ],
-      },
-    },
-  ];
+  // const serveres = [
+  //   {
+  //     serverName: "NA",
+  //     extraserver: {
+  //       middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
+  //       servers: [
+  //         // Array of server objects
+  //         { servername: "Adamantoise" },
+  //         { servername: "Cactuar" },
+  //         { servername: "Faerie" },
+  //         { servername: "Gilgamesh" },
+  //         { servername: "Jenova" },
+  //       ],
+  //     },
+  //   },
+  //   {
+  //     serverName: "JP",
+  //     extraserver: {
+  //       middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
+  //       servers: [
+  //         // Array of server objects
+  //         { servername: "Adamantoise" },
+  //         { servername: "Cactuar" },
+  //         { servername: "Faerie" },
+  //         { servername: "Gilgamesh" },
+  //         { servername: "Jenova" },
+  //       ],
+  //     },
+  //   },
+  //   {
+  //     serverName: "OCE",
+  //     extraserver: {
+  //       middleServer: ["ALL", "Aether", "Crystal", "Primal"], // Array of middle servers (strings)
+  //       servers: [
+  //         // Array of server objects
+  //         { servername: "Adamantoise" },
+  //         { servername: "Cactuar" },
+  //         { servername: "Faerie" },
+  //         { servername: "Gilgamesh" },
+  //         { servername: "Jenova" },
+  //       ],
+  //     },
+  //   },
+  // ];
 
-  console.log("hello", serveres);
   type packageType = {
     title: string;
     img: string;
@@ -229,11 +227,7 @@ const SaleForm: FC = () => {
             </div>
           ))}
         </div>
-        {/* <CustomSelect
-          servers={serveres}
-          server="true"
-          onSelect={setSelectedSever}
-        /> */}
+
         <div>
           <label>Name:</label>
           <input

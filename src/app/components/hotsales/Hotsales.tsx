@@ -1,117 +1,18 @@
 "use client";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import SaleForm from "./Saleform";
 
 const Hotsales: FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selectedValue, setSelectedValue] = useState<string>("");
-  // const games = [
-  //   {
-  //     value: "volvo",
-  //     label: "Volvo",
-  //     icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
-  //   },
-  //   {
-  //     value: "saab",
-  //     label: "Saab",
-  //     icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
-  //   },
-  //   {
-  //     value: "mercedes",
-  //     label: "Mercedes",
-  //     icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
-  //   },
-  //   {
-  //     value: "audi",
-  //     label: "Audi",
-  //     icon: (
-  //       <Image
-  //         src="/hotsale/a.png"
-  //         width={24}
-  //         height={24}
-  //         alt="new"
-  //         className=" rounded-full"
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     value: "audi",
-  //     label: "Audi",
-  //     icon: (
-  //       <Image
-  //         src="/hotsale/a.png"
-  //         width={24}
-  //         height={24}
-  //         alt="new"
-  //         className=" rounded-full"
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     value: "audi",
-  //     label: "Audi",
-  //     icon: (
-  //       <Image
-  //         src="/hotsale/a.png"
-  //         width={24}
-  //         height={24}
-  //         alt="new"
-  //         className=" rounded-full"
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     value: "audi",
-  //     label: "Audi",
-  //     icon: (
-  //       <Image
-  //         src="/hotsale/a.png"
-  //         width={24}
-  //         height={24}
-  //         alt="new"
-  //         className=" rounded-full"
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     value: "audi",
-  //     label: "Audi",
-  //     icon: (
-  //       <Image
-  //         src="/hotsale/a.png"
-  //         width={24}
-  //         height={24}
-  //         alt="new"
-  //         className=" rounded-full"
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     value: "audi",
-  //     label: "Audi",
-  //     icon: (
-  //       <Image
-  //         src="/hotsale/a.png"
-  //         width={24}
-  //         height={24}
-  //         alt="new"
-  //         className=" rounded-full"
-  //       />
-  //     ),
-  //   },
-  // ];
+  // const [selectedValue, setSelectedValue] = useState<string>("");
+
   type hotsaletype = {
     image: string;
     title: string;
   };
 
-  // type packageType = {
-  //   title: string;
-  //   img: string;
-  // };
   const hotsales: hotsaletype[] = [
     {
       image: "/hotsale/a.png",
@@ -138,21 +39,6 @@ const Hotsales: FC = () => {
       title: "Dungeonborne Gold",
     },
   ];
-  // const packages: packageType[] = [
-  //   { title: "Gold", img: "/hotsale/a.png" },
-  //   {
-  //     title: "Wow",
-  //     img: "/hotsale/b.png",
-  //   },
-  //   {
-  //     title: "NBA",
-  //     img: "/hotsale/c.png",
-  //   },
-  //   {
-  //     title: "WOW",
-  //     img: "/hotsale/d.png",
-  //   },
-  // ];
 
   return (
     <>
