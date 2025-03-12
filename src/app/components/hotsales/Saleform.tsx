@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { ChangeEvent, FC, JSX, useState, FormEvent } from "react";
-import CustomSelect from "./CustomSelect";
+// import CustomSelect from "./CustomSelect";
+import SelectGame from "../selectgame/SelectGame";
 
 const SaleForm: FC = () => {
   const [selectedValue, setSelectedValue] = useState<string>("");
-  const [selectedServer, setSelectedSever] = useState<string>("");
+  // const [selectedServer, setSelectedSever] = useState<string>("");
   const [buttonValue, setButtonValue] = useState<string>("");
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -123,6 +124,34 @@ const SaleForm: FC = () => {
         />
       ),
     },
+    {
+      value: "volvo",
+      label: "Volvo",
+      icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
+    },
+    {
+      value: "saab",
+      label: "Saab",
+      icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
+    },
+    {
+      value: "mercedes",
+      label: "Mercedes",
+      icon: <Image src="/hotsale/a.png" width={24} height={24} alt="new" />,
+    },
+    {
+      value: "audi",
+      label: "Audi",
+      icon: (
+        <Image
+          src="/hotsale/a.png"
+          width={24}
+          height={24}
+          alt="new"
+          className=" rounded-full"
+        />
+      ),
+    },
   ];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -140,7 +169,7 @@ const SaleForm: FC = () => {
       ...formData,
       game: selectedValue,
       item: buttonValue,
-      server: selectedServer,
+      // server: selectedServer,
     };
     const jsonData = JSON.stringify(updatedFormData);
     console.log(jsonData); // You can handle the JSON data here
@@ -160,12 +189,16 @@ const SaleForm: FC = () => {
 
         {/* For demo purposes, showing current selected value */}
         <p>Selected Value: {selectedValue}</p>
-        <p>server Value: {selectedServer}</p>
+        {/* <p>server Value: {selectedServer}</p> */}
 
         {/* Inline CSS */}
       </form>
       <form action="" onSubmit={handleSubmit}>
-        <CustomSelect games={games} onSelect={setSelectedValue} />
+        <SelectGame
+          games={games}
+          onSelect={setSelectedValue}
+          placeholder="helo world"
+        />
         <div className=" flex hotsalehover w-full my-6 flex-wrap  gap-3">
           {packages.map((item, i) => (
             <div
@@ -196,11 +229,11 @@ const SaleForm: FC = () => {
             </div>
           ))}
         </div>
-        <CustomSelect
+        {/* <CustomSelect
           servers={serveres}
           server="true"
           onSelect={setSelectedSever}
-        />
+        /> */}
         <div>
           <label>Name:</label>
           <input

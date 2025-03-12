@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { v4 as uuidv4 } from "uuid";
 import { FC, useState } from "react";
 
 import SaleForm from "./Saleform";
@@ -169,10 +170,10 @@ const Hotsales: FC = () => {
             </h3>
 
             <div className="flex hotsalehover w-[322px] mb-6 mx-6 flex-wrap  gap-3">
-              {hotsales.map((item, i) => (
+              {hotsales.map((item) => (
                 <>
                   <div
-                    key={i}
+                    key={uuidv4()}
                     className="w-[155px] h-[60px] bg-gradient-to-l from-purple-500 via-indigo-200 to-purple-100 relative rounded-[10px]"
                   >
                     <div className="w-[147px] h-[52.9px] bg-[#161F33] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-[4.5px] outline-[#334155] hover:outline-transparent rounded-md flex items-center gap-3 p-2">

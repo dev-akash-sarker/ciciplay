@@ -12,9 +12,10 @@ export default function Footer() {
               <Link href="/">
                 <Image
                   src={"/assets/images/header/logo.png"}
-                  alt="hello"
+                  alt="mmofox"
                   width="181"
                   height="39"
+                  className=" w-auto h-auto"
                 />
               </Link>
             </div>

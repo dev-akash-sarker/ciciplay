@@ -22,9 +22,10 @@ const Navbar: FC = () => {
                 <Link href="/">
                   <Image
                     src={"/assets/images/header/logo.png"}
-                    alt="hello"
+                    alt="mmofox"
                     width="181"
                     height="39"
+                    className=" w-auto h-auto"
                   />
                 </Link>
               </li>
@@ -183,9 +184,10 @@ const Navbar: FC = () => {
                 <Link href="/">
                   <Image
                     src={"/assets/images/header/logo.png"}
-                    alt="hello"
+                    alt="mmofox"
                     width="181"
                     height="39"
+                    className=" w-auto h-auto"
                   />
                 </Link>
               </li>
