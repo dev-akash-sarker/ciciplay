@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import url("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css");
 @theme {
+  /* --breakpoint-- */
   --breakpoint-xs: 20rem;
   --breakpoint-sm: 40rem; /* 640px */
   --breakpoint-md: 48rem; /* 768px */
@@ -8,6 +9,38 @@
   --breakpoint-xl: 75rem; /* 1200px */
   --breakpoint-2xl: 90rem; /* 1440px */
   --breakpoint-3xl: 100rem; /* 1600px */
+  /* --color-- */
+  --color-white: #fff;
+  --color-primary: #0f172a;
+  --color-buttonpink: #a855f7;
+  --color-linearmix: linear-gradient(
+    -77deg,
+    rgba(168, 85, 247, 1) 0%,
+    rgba(211, 165, 255, 1) 50%,
+    rgba(246, 237, 255, 1) 100%
+  );
+  --color-linear-light-black: linear-gradient(
+    -90deg,
+    rgba(168, 85, 247, 0.21) 0%,
+    rgba(168, 85, 247, 0) 100%
+  );
+  --color-linear-black: linear-gradient(
+    88deg,
+    rgba(94, 93, 136, 1) 0%,
+    rgba(94, 93, 136, 0) 100%
+  );
+  --color-linear-btn-pink: linear-gradient(
+    -60deg,
+    rgba(168, 85, 247, 1) 0%,
+    rgba(211, 165, 255, 1) 50%,
+    rgba(246, 237, 255, 1) 100%
+  );
+  --color-black: #020202;
+  --color-deep-black: #161f33;
+  --color-light-black: #334155;
+  --color-light-red: #e92e79;
+  --color-light-gray: #d6e0eb;
+  --color-sample: rgb(168, 85, 247);
 }
 :root {
   --background: #ffffff;

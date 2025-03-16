@@ -73,7 +73,7 @@ const Hotsales: FC = () => {
             ))}
           </div>
         </div>
-        <div className="bg-[rgba(22,31,51,70)] rounded-[20px] -mt-10 z-40">
+        <div className=" bg-[rgba(22,31,51,0.70)] backdrop-blur-[31.1px] rounded-[20px] -mt-10 z-40">
           <div className="p-6">
             <SaleForm />
           </div>

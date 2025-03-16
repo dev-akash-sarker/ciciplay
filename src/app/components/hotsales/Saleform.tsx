@@ -3,11 +3,14 @@ import { FC, useState, FormEvent, JSX } from "react";
 import SelectGame from "../selectgame/SelectGame";
 import SelectServer from "../selectserver/SelectServer";
 import { LuCircleCheck } from "react-icons/lu";
+import Quantity from "../quantity/Quantity";
+import { IoLogoEuro } from "react-icons/io";
 
 interface FormData {
   game: string;
   item: string;
   server: string;
+  price: string;
 }
 
 interface Server {
@@ -30,10 +33,12 @@ interface Package {
 }
 
 const SaleForm: FC = () => {
+  const [price, setPrice] = useState<string>("1000");
   const [formData, setFormData] = useState<FormData>({
     game: "",
     item: "",
     server: "",
+    price: "",
   });
 
   const servers: Server[] = [
@@ -115,6 +120,11 @@ const SaleForm: FC = () => {
     setFormData((prev) => ({ ...prev, game: value }));
   };
 
+  const handlePriceSelect = (value: string) => {
+    setPrice(value);
+    setFormData((prev) => ({ ...prev, price: value }));
+  };
+
   const handlePackageSelect = (title: string) => {
     setFormData((prev) => ({ ...prev, item: title }));
   };
@@ -124,6 +134,32 @@ const SaleForm: FC = () => {
     console.log("Final Form Data:", JSON.stringify(formData));
     // Handle submission (API call etc.)
   };
+  // base price
+  const baseprice: number = 0.02368;
+
+  const packageprice = [
+    {
+      priceitem: "500",
+    },
+    {
+      priceitem: "1000",
+      extra: "20",
+    },
+    {
+      priceitem: "2000",
+    },
+    {
+      priceitem: "3000",
+      extra: "5",
+    },
+    {
+      priceitem: "4000",
+    },
+  ];
+
+  const totalprice: number = Number(price) * baseprice;
+
+  const [integerPart, decimalPart] = totalprice.toFixed(2).split(".");
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -176,16 +212,32 @@ const SaleForm: FC = () => {
             <p>Prices may vary from server to server</p>
           </div>
         </div>
-        <div className=" w-[400px] bg-red-500"></div>
+        <div className=" w-[400px] ml-6">
+          <Quantity prices={packageprice} onSelect={handlePriceSelect} />
+          <div className=" flex items-center gap-6">
+            <div className=" flex items-baseline">
+              <IoLogoEuro fontSize={35} color="white" />
+              <span className=" font-bold text-[48px] text-light-red">
+                {integerPart}.
+              </span>
+              <span className=" font-bold text-xl text-light-red">
+                {decimalPart}
+              </span>
+            </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className=" w-full px-6 py-2 bg-buttonpink text-white rounded"
+            >
+              Buy
+            </button>
+          </div>
+          <div className=" text-[#D6E0EB] flex justify-start items-center gap-2">
+            <LuCircleCheck fontSize={16} />
+            <p>Expected delivery time: 10mins -24 hrs</p>
+          </div>
+        </div>
       </div>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        className="px-6 py-2 bg-blue-600 text-white rounded"
-      >
-        Submit
-      </button>
     </form>
   );
 };
